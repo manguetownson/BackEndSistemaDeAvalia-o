@@ -1,5 +1,5 @@
 import express from "express";
-import { createUser, getUsers } from "../Controllers/user.controller.js";
+import { createUser, getUsers, updateUser, deleteUser} from "../Controllers/user.controller.js";
 import { createNote, getNote, updateNote, deleteNote } from "../Controllers/note.controller.js";
 import { createCourse, getCourse, updateCourse, deleteCourse } from '../controllers/course.js';
 import { createSchool, getSchool, updateSchool, deleteSchool } from '../Controllers/school.controller.js';
@@ -9,6 +9,8 @@ const router = express.Router();
 
 router.post('/user', createUser);
 router.get('/users', getUsers);
+router.put('/users/:id', updateUser);
+router.delete('/users/:id', deleteUser);
 
 router.post('/note', createNote);
 router.get('/note/:id', getNote); // Note the correction here in the route definition
