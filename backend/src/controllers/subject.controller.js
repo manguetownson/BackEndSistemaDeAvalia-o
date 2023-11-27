@@ -1,9 +1,6 @@
-import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from "../lib/prisma.js";
 
-const prisma = new PrismaClient();
-
-export const createSubject = async (req: Request, res: Response) => {
+export const createSubject = async (req, res) => {
   try {
     const { title, value, courseID } = req.body;
     const subject = await prisma.subjects.create({
@@ -19,7 +16,7 @@ export const createSubject = async (req: Request, res: Response) => {
   }
 };
 
-export const getSubjects = async (req: Request, res: Response) => {
+export const getSubjects = async (_, res) => {
   try {
     const subjects = await prisma.subjects.findMany();
     res.json(subjects);
@@ -28,7 +25,7 @@ export const getSubjects = async (req: Request, res: Response) => {
   }
 };
 
-export const getSubjectById = async (req: Request, res: Response) => {
+export const getSubjectById = async (req, res) => {
   try {
     const { id } = req.params;
     const subject = await prisma.subjects.findUnique({
@@ -44,7 +41,7 @@ export const getSubjectById = async (req: Request, res: Response) => {
   }
 };
 
-export const updateSubject = async (req: Request, res: Response) => {
+export const updateSubject = async (req, res) => {
   try {
     const { id } = req.params;
     const { title, value, courseID } = req.body;
@@ -62,7 +59,7 @@ export const updateSubject = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteSubject = async (req: Request, res: Response) => {
+export const deleteSubject = async (req, res) => {
   try {
     const { id } = req.params;
     await prisma.subjects.delete({
