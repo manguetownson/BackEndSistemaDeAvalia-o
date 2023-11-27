@@ -1,9 +1,9 @@
 import express from "express";
 import { createUser, getUsers, updateUser, deleteUser} from "../Controllers/user.controller.js";
 import { createNote, getNote, updateNote, deleteNote } from "../Controllers/note.controller.js";
-import { createCourse, getCourse, updateCourse, deleteCourse } from '../controllers/course.js';
+import { createCourse, getCourse, updateCourse, deleteCourse } from '../Controllers/course.controller.js';
 import { createSchool, getSchool, updateSchool, deleteSchool } from '../Controllers/school.controller.js';
-import { getAllTokens, createToken, updateToken, deleteToken } from '../controllers/tokenController.js';
+import { getAllTokens, createToken, updateToken, deleteToken } from '../Controllers/token.controller.js';
 
 const router = express.Router();
 
@@ -27,7 +27,6 @@ router.get('/schools/:id', getSchool);
 router.put('/schools/:id', updateSchool);
 router.delete('/schools/:id', deleteSchool);
 
-// Token routes
 router.get('/tokens', getAllTokens);
 router.post('/token', createToken);
 router.put('/token/:id', updateToken);
